@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>쇼핑상세보기</title>
+        <style>
+        table td{
+            width:200px;
+            padding:10px;
+            border-bottom:1px solid lightgray;
+        }
+        .parent{
+            width : 1000px;
+            height : 400px;
+            position : relative;
+            left:100px;
+            
+        }
+        .child1{
+            position : absolute;
+            width:300px;
+            height: 100px;
+            left:440px;
+        }
+        .child2{
+            position : absolute;
+            width:300px;
+            height: 120px;
+        }
+        .sub{
+            font-size: 9pt;
+        }
+        #fon{
+            color:lightsalmon;
+            font-size : 14pt;
+        }
+        body{
+            font-family: 'NanumGothic'; src: url(NanumFont_TTF_ALL/NanumGothic.ttf) format('truetype');
+        }
+        </style>
+    </head>
+    <body>
+        <br>
+        <br>
+        <br>
+        <div class = "parent">
+        <div class = "child2">
+        <img src = "img/07.png" width = "400px" height = "400px">
+        </div>
+        <div class = "child1">
+        <h2>완두앙꼬</h2>
+        <hr size = "3" color = "burlywood">
+        <table>
+            <tr>
+                <td class = "sub">판매가</td>
+                <td>7500</td>
+            </tr>
+
+            <tr>
+                <td class = "sub">상품코드</td>
+                <td>C004848</td>
+            </tr>
+
+            <tr>
+                <td class = "sub">사이즈 및 옵션</td>
+                <td><select name = “sel”>
+                        <option value = “kor”>100ml</option>
+                        <option value = “eng”>150ml</option>
+                        <option value = “LA”>200ml</option>
+                      </select></td>
+            </tr>
+
+            <tr>
+                <td class = "sub">구매수량</td>
+                <td><input id = "num" type = "number" min = "1" max = "5" value = "1"> </td>
+            </tr>
+
+            <tr> 
+                <td class = "sub">배송비</td>
+                <td class = "sub">무료배송</td>
+            </tr>
+
+            <tr>
+                <td class = "sub">결제금액</td>
+                <td id = "fon">7,500원</td>
+            </tr>
+        </table>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type ="button" value = "구매하기"/> &nbsp;&nbsp;&nbsp;<input type ="button" value = "장바구니"/>
+        </div>
+        </div>
+    </body>
+</html>
