@@ -1,0 +1,105 @@
+Load: 
+
+luna-send -n 1 -f luna://com.webos.media/load '{ "uri":"https://media.w3.org/2010/05/sintel/trailer.mp4","type":"media", "payload":{  "option":{  "appId":"com.webos.app.enactbrowser",    "windowId":"_Window_Id_1" } }}'
+
+subscribe:
+
+luna-send -n 2 -f luna://com.webos.media/subscribe '{ "mediaId":"_KkxUBgF2SBYD3R"}'
+
+
+play:
+
+luna-send -n 1 -f luna://com.webos.media/play '{"mediaId":"_KkxUBgF2SBYD3R"}'
+
+Pause:
+luna-send -n 1 -f luna://com.webos.media/pause '{ "mediaId":"_ZePldG21pm8EvG"}'
+
+
+unload:
+
+luna-send -n 1 -f luna://com.webos.media/unload '{  "mediaId":"_ZePldG21pm8EvG"}'
+
+
+
+
+
+Link:
+https://www.webosose.org/docs/reference/ls2-api/com-webos-service-camera2/#api-summary
+
+
+Camera:
+
+Get camera list:
+luna-send -n 1 -f luna://com.webos.service.camera2/getCameraList '{}'
+
+
+open camera:
+luna-send -n 1 -f luna://com.webos.service.camera2/open '{"id":"camera1"}'
+
+
+getInfo:
+luna-send -n 1 -f luna://com.webos.service.camera2/getInfo '{"id":"camera1"}'
+
+
+getproperties:
+luna-send -n 1 -f luna://com.webos.service.camera2/getProperties '{ "handle":9383}'
+
+
+setproperties:
+luna-send -n 1 -f luna://com.webos.service.camera2/setProperties '{"handle": 9383,"params": { "contrast": 100  }}'
+
+
+start preview:
+luna-send -n 1 -f luna://com.webos.service.camera2/startPreview '{ "handle":9383,"params":{"type":"sharedmemory","source":"0" }}'
+
+
+start capture:
+luna-send -n 1 -f luna://com.webos.service.camera2/startCapture '{"handle": 9383,"params": { "width": 640,  "height": 480,  "format": "JPEG",  "mode":"MODE_BURST","nimage":2  }, "path":"/home/"}'
+
+stop capture:
+luna-send -n 1 -f luna://com.webos.service.camera2/stopCapture '{"handle":9383}'
+
+
+stop preview:
+luna-send -n 1 -f luna://com.webos.service.camera2/stopPreview '{ "handle":9383}'
+
+close:
+luna-send -n 1 -f luna://com.webos.service.camera2/close '{"handle":886}'
+
+
+
+
+
+
+
+live preview:
+
+luna-send -n 1 luna://com.webos.media/load '{ "uri":"camera://com.webos.service.camera2/4216", "payload":{ "option":{"appId":"com.webos.app.enactbrowse","windowId":"_Window_Id_1", "videoDisplayMode":"Textured", "width":640, "height":480, "format":"JPEG", "frameRate":30,    "memType":"shmem", "memSrc":"7010"   } },   "type":"camera"}'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Start camera record:
+luna-send -n 1 -f luna://com.webos.media/setPlayRate '{
+   "playRate":2.0,
+   "mediaId":"_QnGGXr7BdWsOV1",
+   "audioOutput":true
+}'
+
+stop camera record:
+
+luna-send -n 1 luna://com.webos.media/stopCameraRecord '{
+   "mediaId":"_JtLZrGoEAoRa1d"
+}'
+
+

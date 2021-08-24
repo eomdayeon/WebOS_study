@@ -1,0 +1,55 @@
+Bluetooth: 
+Link: 
+https://www.webosose.org/docs/reference/ls2-api/com-webos-service-bluetooth2/#adapter-
+
+
+startdiscovery 
+
+adapter get status: 
+luna-send -i -f luna://com.webos.service.bluetooth2/adapter/getStatus '{"subscribe":true}'
+
+
+Setstate:
+luna-send -f -n 1 luna://com.webos.service.bluetooth2/adapter/setState '{"powered":true}'
+
+Start discovery: 
+luna-send -n 1 -f luna://com.webos.service.bluetooth2/adapter/startDiscovery '{ }'
+
+Get the status:
+luna-send -i -f luna://com.webos.service.bluetooth2/device/getStatus '{}'
+
+Pair:
+luna-send -i -f luna://com.webos.service.bluetooth2/adapter/pair '{ "address": "34:4d:f7:f9:52:f7", "subscribe":true }'
+
+
+unpair:
+luna-send -n 1 -f luna://com.webos.service.bluetooth2/adapter/unpair '{"address": "34:4d:f7:f9:52:f7"}'
+
+Cancel discovery:
+luna-send -n 1 -f luna://com.webos.service.bluetooth2/adapter/cancelDiscovery '{ }'
+
+
+ 
+
+
+Wifi
+
+Getstatus:
+luna-send -n 1 -f luna://com.webos.service.wifi/getstatus {}
+
+Setstate:
+luna-send -n 1 -f luna://com.webos.service.wifi/setstate '{"state": "disabled"}'
+
+Get profile list:
+luna-send -n 1 -f luna://com.webos.service.wifi/getprofilelist '{}'
+
+Find networks
+luna-send -n 1 -f luna://com.webos.service.wifi/findnetworks '{"interval": 15000}'
+
+Connect:
+luna-send -n 1 -f luna://com.webos.service.wifi/connect '{"ssid":"XXX", "security":{"securityType":"psk", "simpleSecurity":{"passKey":"1234"}}}'
+
+get country code:
+luna-send -n 1 -f luna://com.webos.service.wifi/getCountryCode '{}'
+
+
