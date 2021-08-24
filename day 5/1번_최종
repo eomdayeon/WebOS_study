@@ -1,0 +1,47 @@
+// set putKind
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/putKind '{"id":"com.webos.Assignment:1","owner":"com.webos.Assignment","schema":{"type":"object","properties":{"FirstName":{ "type":"string"},"LastName":{ "type":"string"},"ID_Number":{ "type":"string"},"Age":{ "type":"string"},"Salary":{ "type":"string"},"Employee_loc":{ "type":"string"}}},"indexes":[{"name":"FirstName","props":[{"name":"FirstName"}]},{"name":"LastName","props":[{"name":"LastName"}]},{"name":"ID_Number","props":[{"name":"ID_Number"}]},{"name":"Age","props":[{"name":"Age"}]},{"name":"Salary","props":[{"name":"Salary"}]},{"name":"Employee_loc","props":[{"name":"Employee_loc"}]}]}'
+    
+ 
+ 
+ 
+ 
+ 
+ //insert
+ luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/put '{"objects":[{"FirstName":"Lam","LastName":"SeoEom","ID_Number":"11","Age":"10","Salary":"10000","Employee_loc":"Bangalore","_kind":"com.webos.Assignment:1"}]}'
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/put '{"objects":[{"FirstName":"Wam","LastName":"SeoSo","ID_Number":"12","Age":"20","Salary":"10000","Employee_loc":"Daegu","_kind":"com.webos.Assignment:1"}]}'
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/put '{"objects":[{"FirstName":"Tam","LastName":"SeoLo","ID_Number":"13","Age":"30","Salary":"10000","Employee_loc":"Daegu","_kind":"com.webos.Assignment:1"}]}'
+
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/put '{"objects":[{"FirstName":"Ram","LastName":"KimPo","ID_Number":"14","Age":"40","Salary":"20000","Employee_loc":"Daegu","_kind":"com.webos.Assignment:1"}]}'
+
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/put '{"objects":[{"FirstName":"Sham","LastName":"KimJee","ID_Number":"15","Age":"50","Salary":"20000","Employee_loc":"Bangalore","_kind":"com.webos.Assignment:1"}]}'
+
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/put '{"objects":[{"FirstName":"Sam","LastName":"KimPom","ID_Number":"16","Age":"60","Salary":"20000","Employee_loc":"Seoul","_kind":"com.webos.Assignment:1"}]}'
+
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/put '{"objects":[{"FirstName":"Fam","LastName":"KimLi","ID_Number":"17","Age":"70","Salary":"30000","Employee_loc":"Seoul","_kind":"com.webos.Assignment:1"}]}'
+
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/put '{"objects":[{"FirstName":"Kam","LastName":"KimJoe","ID_Number":"18","Age":"80","Salary":"30000","Employee_loc":"Bangalore","_kind":"com.webos.Assignment:1"}]}'
+
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/put '{"objects":[{"FirstName":"Pam","LastName":"KimJohn","ID_Number":"19","Age":"90","Salary":"30000","Employee_loc":"Seoul","_kind":"com.webos.Assignment:1"}]}'
+
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/put '{"objects":[{"FirstName":"Suraj","LastName":"LeeHi","ID_Number":"20","Age":"100","Salary":"40000","Employee_loc":"Seoul","_kind":"com.webos.Assignment:1"}]}'
+ 
+
+
+// list of all
+luna-send -i -f -a com.palm.configurator luna://com.webos.service.db/find '{"query":{"from":"com.webos.Assignment:1"}}'
+
+ // change result
+
+ luna-send -n 1 -f -a com.palm.configurator luna://com.webos.service.db/merge '{"query":{"from":"com.webos.Assignment:1","where":[{"prop":"Salary","op":"=","val":"10000"}]},"props":{"Salary":"15000"}}'
+
+ 
+ // insert filed and add value
+ luna-send -n 1 -f -a com.palm.configurator luna://com.webos.service.db/merge '{"query":{"from":"com.webos.Assignment:1","where":[{"prop":"FirstName","op":"=","val":"Ram"}]},"props":{"LastName":"KimPool","ID_Number":"24","Age":"45","Salary":"50000","EmployeeCountry":"Korea"}}'
+ luna-send -n 1 -f -a com.palm.configurator luna://com.webos.service.db/merge '{"query":{"from":"com.webos.Assignment:1","where":[{"prop":"FirstName","op":"=","val":"Suraj"}]},"props":{"EmployeeCountry":"Korea"}}'
+ 
+ 
+ 
+luna-send -i -f -a com.palm.configurator luna://com.webos.service.db/find '{"query":{"from":"com.webos.Assignment:1","where":[{"prop":"Employee_loc","op":"=","val":"Bangalore"}]}}'
+
+
+luna-send -i -f -a com.palm.configurator luna://com.webos.service.db/search '{"query":{"from":"com.webos.Assignment:1","where":[{"prop":"LastName","op":"?","val":"Kim%"}]}}' 

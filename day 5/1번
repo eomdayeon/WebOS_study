@@ -1,0 +1,230 @@
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/putKind '{"id":"com.webos.music:1","owner":"com.webos.music","schema": {"type":"object","properties":{"musicTitle":{"type":"string"},"musicDatafile":{ "type":"string"},"musicFormat":{"type":"string"},"musicSinger":{ "type":"string"},"musicDuration":{"type":"string"}}},"indexes":[{"name":"musicList","props":[{"name":"musicTitle"}]},{"name":"musicTitleSinger","props":[{"name":"musicTitle"},{"name":"musicSinger"}]}]}'
+
+
+
+-----------------------------------------------------------------------------------------
+
+luna-send -n 1 -f -m com.palm.configurator luna://com.webos.service.db/putKind '{
+
+"id":"com.webos.music:1",
+"owner":"com.webos.music",
+
+"schema": {
+	"type":"object",
+	"properties":{
+		"musicTitle":{"type":"string"},
+		"musicDatafile":{ "type":"string"},
+		"musicFormat":{"type":"string"},
+		"musicSinger":{ "type":"string"},
+		"musicDuration":{"type":"string"}}
+	},
+
+"indexes":[
+		{"name":"musicList",
+		"props":[{"name":"musicTitle"}]
+		},
+
+		{"name":"musicTitleSinger",
+		"props":[{"name":"musicTitle"},{"name":"musicSinger"}]
+		}
+	]
+}'
+
+
+-----------------------------------------------------------------------------------------
+
+
+luna-send -n 1 -f -m com.palm.configurator
+luna://com.webos.service.db/put '
+{
+
+    "objects":[
+        {
+            "musicTitle":"Dil se re",
+            "musicDatafile":"320kbs",
+            "musicFormat":"mp3",
+            "musicSinger":"A RRahman",
+            "musicDuration":"3m20s",
+            "_kind":"com.webos.music:1"
+        }
+    ]
+
+}'
+-----------------------------------------------------------------------------------------
+
+
+luna-send -n 1 -f -a com.palm.configurator
+luna://com.webos.service.db/merge '
+{
+
+    "query":{
+        "from":"com.webos.music:1",
+        "where":[
+            {
+                "prop":"musicTitle",
+                "op":"=",
+                "val":"Dil se re"
+            }
+        ]
+    },
+    "props":{
+        "musicTitle":"Updated_Maa Tujhe Salaam"
+    }
+
+}'
+
+
+-----------------------------------------------------------------------------------------
+
+
+luna-send -n 1 -f -a com.palm.configurator
+luna://com.webos.service.db/mergePut '
+{
+    "query":{
+        "from":"com.webos.music:1",
+        "where":[
+            {
+                "prop":"musicTitle",
+                "op":"=",
+                "val":"Dil se re"
+            }
+        ]
+    },
+    "props"{"_kind":"com.webos.music:1",
+    "musicTitle":"Luka Chuppi",
+    "musicSinger":"A RRahman",
+    "value":{
+        "country":"INDIA"
+    }
+
+}}'
+
+
+-----------------------------------------------------------------------------------------
+
+
+get
+luna-send -n 1 -f -m com.palm.configurator
+luna://com.webos.service.db/get '
+{
+	"ids":"L5YPiJ7bFkB"]
+}'
+
+-----------------------------------------------------------------------------------------
+
+
+find
+luna-send -n 1 -f -m com.palm.configurator
+luna://com.webos.service.db/find '
+{	
+	"query":{"from":"com.webos.music:1"}
+}'
+
+
+-----------------------------------------------------------------------------------------
+
+inset object 1
+luna-send -n 1 -f -m com.palm.configurator
+luna://com.webos.service.db/put '
+{
+
+    "objects":[
+        {
+            "musicTitle":"Dil se re",
+            "musicDatafile":"320kbs",
+            "musicFormat":"mp3",
+            "musicSinger":"A RRahman",
+            "musicDuration":"3m20s",
+            "_kind":"com.webos.music:1"
+        }
+    ]
+
+}'
+==========================================================================================
+
+insert object 2
+luna-send -n 1 -f -m com.palm.configurator
+luna://com.webos.service.db/put '
+{
+
+    "objects":[
+        {
+            "musicTitle":"louder",
+            "musicDatafile":"128kbs",
+            "musicFormat":"wav",
+            "musicSinger":"Parade",
+            "musicDuration":"1m20s",
+            "_kind":"com.webos.music1"
+        }
+    ]
+
+}'
+==========================================================================================
+
+
+music title match
+luna-send -n 1 -f -m com.palm.configurator
+luna://com.webos.service.db/find '
+{
+
+    "query":{
+        "where":[
+            {
+                "op":"=",
+                "val":"Dil se re",
+                "prop":"musicTitle"
+            }
+        ],
+        "from":"com.webos.music:1"
+    }
+
+}'
+
+==========================================================================================
+
+Search:
+luna-send -n 1 -f -m com.palm.configurator
+luna://com.webos.service.db/search '
+{
+
+    "query":{
+        "where":[
+            {
+                "op":"=",
+                "val":"Dil se re",
+                "prop":"musicTitle"
+            }
+        ],
+        "from":"com.webos.music:1"
+    }
+
+}'
+
+==========================================================================================
+
+watch:
+luna-send -i -f -a
+com.palm.configuratorluna://com.webos.service.db/watch '
+{
+
+    "query":{
+        "from":"com.webos.music:1",
+        "where":[
+            {
+                "prop":"musicTitle",
+                "op":"=",
+                "val":"Dil se re"
+            }
+        ]
+    }
+
+}'
+==========================================================================================
+
+
+
+
+
+
+
+
