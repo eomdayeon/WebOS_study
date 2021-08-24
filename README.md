@@ -1,0 +1,1 @@
+# LG_internship_study
